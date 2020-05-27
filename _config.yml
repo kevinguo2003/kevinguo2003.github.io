@@ -56,9 +56,9 @@ postPatterns: 'circuitBoard'
 # SNS settings 配置社交网站
 # url: email, weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
 sns:
-  zhuhu: '//https://www.zhihu.com/people/guo-xiao-50-87'
+  zhihu: '//www.zhihu.com/people/guo-xiao-50-87'
   email: '//kevinguo2003@vt.edu'
-  instagram: '//https://www.instagram.com/guoxiao0303/?hl=en'
+  instagram: '//www.instagram.com/guoxiao0303/?hl=en'
   github: '//github.com/kevinguo2003'
 
 # Tags 设置标签
