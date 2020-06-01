@@ -21,7 +21,8 @@ tags: CS3114 week1 data-strcutures
 Note: Eclipse provided us with a powerful debugger. It has common functionality like stepinto, stepover, resume, and most importantly, placing breakpoints. Detailed tutorials can be found at [Debugger Tutorial from Eclipse official page](https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php)
 
 ### JUnit Test
-JUnit test are designed to allow the program to run in the specified condition and examine whether the input was the expected value. The test cases should be independent and cover most of the program.\n
+JUnit test are designed to allow the program to run in the specified condition and examine whether the input was the expected value. The test cases should be independent and cover most of the program.
+
 In Eclipse, we can find out how many percents of the code was tested by selecting Window-Show View-Other-Java-Coverage.
 P.S: Since we're very familiar with the Junit test by practicing in CS2114, I believe we have a decent understood of the Junit test.
 
