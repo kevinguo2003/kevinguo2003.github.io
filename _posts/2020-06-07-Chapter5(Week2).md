@@ -22,11 +22,13 @@ We shall have insert(append) and remove method.
 
 For the linked list:
 [implementation](https://canvas.vt.edu/courses/111334/assignments/883535?module_item_id=901390)
+
 The linked list will allocate memory dynamically, which is allocates memory for new elements as needed. The whole concept of "linked" is achieved by nodes. The node object usually has two fields links to its left and right node, which make all the nodes interconnected with two nodes near each individual node. To resolve the problem of special cases, we introduce an additional head node to be the first node of the list. Its value is ignored though its existence can help us better arrange the list.
 
 ### Comparison between two kinds of list
 The biggest con of an array-based list is that its size was pre-determined which made this data structure wasted a lot of space when dealing with a small amount of element. However, if we choose the linked list, the space usage of these links will become too large if we're dealing with the small-size element. So we need to decide a mathematical balance point between these two lists: the break-even point. 
-Equation n>DE/(P+E) (specification:[openDSA]https://canvas.vt.edu/courses/111334/assignments/883536?module_item_id=901392)
+Equation n>DE/(P+E) 
+specification:[openDSA](https://canvas.vt.edu/courses/111334/assignments/883536?module_item_id=901392)
 
 Note: Doubly Linked Lists
 This kind of list has fields like curr, head, and tail. Every two near nodes are interconnected. Also, we need to consider whether to enforce homogeneity or not.
