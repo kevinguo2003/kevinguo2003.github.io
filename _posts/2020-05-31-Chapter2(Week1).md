@@ -4,7 +4,7 @@ title: 'Chapter2 and Class Notes'
 date: 2020-05-31
 author: Xiao Guo
 cover: '/assets/img/MountAl.jpg'
-tags: CS3114 week1 data-strcutures
+tags: CS3114 week1 data-structures
 ---
 
 > Eclipse-related topic and Java-debugging
@@ -17,8 +17,8 @@ tags: CS3114 week1 data-strcutures
 ### Common debugging methods
 1. Print: Use the console to display the output and compare with the value we expected
 2. Rubber Duck: Carefully examine each line and explain how that line works.
-3. Worf Fence debugging: Splitting the whole program and locate which area of code the bug is. Repeating this process to find the bug.
-Note: Eclipse provided us with a powerful debugger. It has common functionality like stepinto, stepover, resume, and most importantly, placing breakpoints. Detailed tutorials can be found at [Debugger Tutorial from Eclipse official page](https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php)
+3. Wolf Fence debugging: Splitting the whole program and locate which area of code the bug is. Repeating this process to find the bug.
+Note: Eclipse provided us with a powerful debugger. It has common functionality like step into, stepover, resume, and most importantly, placing breakpoints. Detailed tutorials can be found at [Debugger Tutorial from Eclipse official page](https://www.eclipse.org/community/eclipse_newsletter/2017/june/article1.php)
 
 ### JUnit Test
 JUnit test are designed to allow the program to run in the specified condition and examine whether the input was the expected value. The test cases should be independent and cover most of the program.

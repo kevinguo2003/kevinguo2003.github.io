@@ -4,7 +4,7 @@ title: 'Chapter1:Introduction to data structures and algorithms '
 date: 2020-05-29
 author: Xiao Guo
 cover: '/assets/img/MountAl.jpg'
-tags: CS3114 week1 data-strcutures
+tags: CS3114 week1 data-structures
 ---
 
 > 1.1 Data Structures and Algorithms
