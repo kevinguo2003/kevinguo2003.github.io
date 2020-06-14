@@ -1,78 +1,62 @@
 ---
 layout: post
-title: 'Chapter 7&15'
+title: 'Chapter 9'
 date: 2020-06-07
 author: Xiao Guo
 cover: '/assets/img/MountAl.jpg'
-tags: CS3114 week2 data-structures trees
+tags: CS3114 week3 data-structures
 ---
 
-> Binary Trees
+> File Processing
 
 ### Definition and background
-Trees are widely used to store and manage large collections of data. A binary tree can either be empty or have a node called root with two subtrees.
+Often, we need to access certain file from certain memory. To reach the maximum efficiency, we're likely to store the information we need in the memory rather than the disk. However, it's not always applicable to store all the file in our memory, which leads us the topic we wanna discurss: the best way to access file, no matter where it is stored. In this chapter, we will focus on the concept of buffer pool, which is the basic of a cache system.
 
-Depth:the length of path from the root to the current node.
-Height:the depth of the deepest node in the tree.
-Level:All the nodes in one same depth forms a level.
+### Primary versus Secondary Storage
+1. Primary storage: RAM
+2. Secondary storage: Disk drives, solid state drives, or removable USB drives.
+3. The advantage of secondary storage: It's much more chaper than the RAM. And the most importantly, the disk drive is persistent, which means the file inside will not disappear when the power is shutdown.
+4. Minimize the disk access: with all these advantage, there is a fatal flaw of accessing file from a disk: it's too slow. The factor of how much it is faster to access the RAM comparing to disk is ranging from 100000 to 1000000. To avoid this, we need a better structure to store some information we want in the disk into the RAM, which is called caching.
 
-Complete:The tree must be started at the root then filled by levels from left to right.
-Full:each node is either an internal node with exactly two non-empty children or a leaf.
+### Disk Drives
+The disk drive is called direct-access memory, which means the speed to access one file is always a certain amount no matter in what situation. This leads to a fact that there is always some file that can be accessed faster than others.
 
-Note:the property of binary tree that a node can be defined whether as an single node or the root of another tree made binary tree naturally related with recursion.
+Structures: 
+The disk is cmposed one or more round platters which stack on each other and connected with a certral spindle. While they spin, there is a I/O head which can read or write into the disk. (Note:this head doesn't really touch the platter, but keep a very short distance from it). Also, the track is divided into sectors which all store the same amount of data.
 
-Full Binary Tree Theorem: The number of leaves in a non-empty full binary tree is one more than the number of internal nodes.
-Also, the number of empty subtrees in a non-empty binary tree is one more than the number of nodes in the tree.
+When reading the data, there is mainly three separate steps:
+1. seek: the I/O head moves until it is positioned over the track where the data was stored.
+2. The sector that contains the data will rotate to the I/O head.
+3. the actual transfer of data.
 
-### Traversals
-1. Pre-Order: Visit every node before we visit its children.
-[pre-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/pre-order.png)
-2. Post-Ordered: We first visit the children, and only after that we will visit their parent node.
-[post-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/post-order.png)
-3. In-Ordered: First visit the left child, then the node, then finally the right child. We know BST can use in-order to print the nodes in increasing order.
-[in-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/in-order.png)
-4. Implementation:
-[implementation](https://canvas.vt.edu/courses/111334/assignments/883547?module_item_id=901421)
-Note that recursion played an important role here helping improving the efficiency.
+Note:due to design reason, the cost to seek is always the biggest concern.
 
-### Node implementation
-We have very detailed example in openDSA:[openDSA](https://canvas.vt.edu/courses/111334/modules/items/901426)
+### Buffering Pool
+1. the locality of referene: in practical, the most disk requests are closed the location of the previous request, which makes the chance of hitting the cache to be higher.
+2. One important reason why new disk is quicker than the old one is because the innovation of cache system.
+3. The process of using buffers as an intermediary between a user and the disk file is called buffering the file. The collection of all these buffers are called the buffering pool. The main goal of this pool is to decrease the amount of file that we need to access from the disk.
 
-Note: The most common nodes includes two fields pointing to two children. Also we want to implement the value to be comparable so that we can utilize the comparison to implement the tree-related method.
-
-Note: Since node usually stores two pointers to other nodes, binary trees turns to be very space-consuming. However, by eliminating the pointers from leaf nodes in full binary trees.
-
-### Other related trees
-
-Composite-based Expression Tree:[implementation](https://canvas.vt.edu/courses/111334/modules/items/901427)
-
-Dictionary Implementation Using a BST:
-we can use BST to implement a dictionary-like database. This brings us an advantage that all the major operations like insert, remove and search can be O(log n) in the average case.
-[Example from OpenDSA](https://canvas.vt.edu/courses/111334/modules/items/901427)
-
-Huffman Coding Trees: Sorry I'm having a hard time understanding this, I will post it very quick before Monday ends.
+### Replacement Stretegy
+1. We nned to replace some information when the buffering pool is full, which requires us to come up with a good stretegy for this.
+2. FIFO: The information that we want to replace is which exists the longest. However, sometimes certain information will be used over and over agian which lead us to consider the frequency of one information.
+3. LFU and LRU: They all count the frequency the we used certain information. However, the LRU can better handling the old information as well as the counting process, which made LRU one of the most used stretegy.
 
 
-### Heaps and Priority Queues
-Priority queues: when elements in queue have their specified property of priority, the queue is called a priority queue.
-Heap: A heap is a complete tree whose element was ordered according priority. Also, min heaps and max heaps all have their certain fit case.
-[Specification from openDSA](https://canvas.vt.edu/courses/111334/assignments/883555?module_item_id=901441)
+Note: some useful Java method listed in OpenDSA:
+1. RandomAccessFile(String name, String mode): Class constructor, opens a disk file for processing.
+2. read(byte[] b): Read some bytes from the current position in the file. The current position moves forward as the bytes are read.
+3. write(byte[] b): Write some bytes at the current position in the file (overwriting the bytes already at that position). The current position moves forward as the bytes are written.
+4. seek(long pos): Move the current position in the file to pos. This allows bytes at arbitrary places within the file to be read or written.
+5. close(): Close a file at the end of processing.
 
+### External Sorting
+To maximize the efficiency of I/O, we want to sort the external file in a certain kind of order. However, it's not possible to use the internal sort that we are familiar with since the file size is often too large. 
 
-> Advanced Data Structures
+A good summary from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883572?module_item_id=901485)
 
-### Skip Lists
-Comparing to 2-3 tree, AVL tree and splay tree, skip list is relatively easy while effective at most time.
-[implementation](https://canvas.vt.edu/courses/111334/modules/items/901547)
+In summary, a good external sorting algorithm will seek to do the following:
 
-### PR Quadtree
-A quad-tree is a data structure that is a data structure with up to four subtrees per node.
-The quadtree is the only suitable algorithm for locating pixels in two-dimensional pictures. Because in a two-dimensional space (the way diagrams are often described), planar pixels can be repeatedly divided into four parts, and the depth of the tree is determined by the complexity of the picture, computer memory, and graphics.
-The quadtree can be used to place and locate files (called records or keys) in the database. This algorithm performs matching search by continuously dividing the record to be searched into 4 parts until only one record remains.
-
-Features:
-1. Can be decomposed into their respective blocks
-2. Each block has node capacity. When the node reaches the maximum capacity, the node splits
-3. The tree-like data structure is distinguished according to the quaternary tree method
-
-Note:The quaternary tree can be classified by their data form representation. The data form items are: area, point, line and curve. The quaternary tree can also be classified regardless of whether the shape of the tree is independent of the processed ranking data. 
+1. Make the initial runs as long as possible.
+2. At all stages, overlap input, processing, and output as much as possible.
+3. Use as much working memory as possible. Applying more memory usually speeds processing. In fact, more memory will have a greater effect than a faster disk. 4. A faster CPU is unlikely to yield much improvement in running time for external sorting, because disk I/O speed is the limiting factor.
+5. If possible, use additional disk drives for more overlapping of processing with I/O, and to allow for sequential file processing.
