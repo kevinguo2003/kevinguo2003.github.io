@@ -1,0 +1,78 @@
+---
+layout: post
+title: 'Chapter 8'
+date: 2020-06-13
+author: Xiao Guo
+cover: '/assets/img/MountAl.jpg'
+tags: CS3114 week3 data-structures
+---
+
+> Sorting
+
+### Definition and background
+Trees are widely used to store and manage large collections of data. A binary tree can either be empty or have a node called root with two subtrees.
+
+Depth:the length of path from the root to the current node.
+Height:the depth of the deepest node in the tree.
+Level:All the nodes in one same depth forms a level.
+
+Complete:The tree must be started at the root then filled by levels from left to right.
+Full:each node is either an internal node with exactly two non-empty children or a leaf.
+
+Note:the property of binary tree that a node can be defined whether as an single node or the root of another tree made binary tree naturally related with recursion.
+
+Full Binary Tree Theorem: The number of leaves in a non-empty full binary tree is one more than the number of internal nodes.
+Also, the number of empty subtrees in a non-empty binary tree is one more than the number of nodes in the tree.
+
+### Traversals
+1. Pre-Order: Visit every node before we visit its children.
+[pre-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/pre-order.png)
+2. Post-Ordered: We first visit the children, and only after that we will visit their parent node.
+[post-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/post-order.png)
+3. In-Ordered: First visit the left child, then the node, then finally the right child. We know BST can use in-order to print the nodes in increasing order.
+[in-order example](https://github.com/kevinguo2003/kevinguo2003.github.io/blob/master/assets/img/in-order.png)
+4. Implementation:
+[implementation](https://canvas.vt.edu/courses/111334/assignments/883547?module_item_id=901421)
+Note that recursion played an important role here helping improving the efficiency.
+
+### Node implementation
+We have very detailed example in openDSA:[openDSA](https://canvas.vt.edu/courses/111334/modules/items/901426)
+
+Note: The most common nodes includes two fields pointing to two children. Also we want to implement the value to be comparable so that we can utilize the comparison to implement the tree-related method.
+
+Note: Since node usually stores two pointers to other nodes, binary trees turns to be very space-consuming. However, by eliminating the pointers from leaf nodes in full binary trees.
+
+### Other related trees
+
+Composite-based Expression Tree:[implementation](https://canvas.vt.edu/courses/111334/modules/items/901427)
+
+Dictionary Implementation Using a BST:
+we can use BST to implement a dictionary-like database. This brings us an advantage that all the major operations like insert, remove and search can be O(log n) in the average case.
+[Example from OpenDSA](https://canvas.vt.edu/courses/111334/modules/items/901427)
+
+Huffman Coding Trees: Sorry I'm having a hard time understanding this, I will post it very quick before Monday ends.
+
+
+### Heaps and Priority Queues
+Priority queues: when elements in queue have their specified property of priority, the queue is called a priority queue.
+Heap: A heap is a complete tree whose element was ordered according priority. Also, min heaps and max heaps all have their certain fit case.
+[Specification from openDSA](https://canvas.vt.edu/courses/111334/assignments/883555?module_item_id=901441)
+
+
+> Advanced Data Structures
+
+### Skip Lists
+Comparing to 2-3 tree, AVL tree and splay tree, skip list is relatively easy while effective at most time.
+[implementation](https://canvas.vt.edu/courses/111334/modules/items/901547)
+
+### PR Quadtree
+A quad-tree is a data structure that is a data structure with up to four subtrees per node.
+The quadtree is the only suitable algorithm for locating pixels in two-dimensional pictures. Because in a two-dimensional space (the way diagrams are often described), planar pixels can be repeatedly divided into four parts, and the depth of the tree is determined by the complexity of the picture, computer memory, and graphics.
+The quadtree can be used to place and locate files (called records or keys) in the database. This algorithm performs matching search by continuously dividing the record to be searched into 4 parts until only one record remains.
+
+Features:
+1. Can be decomposed into their respective blocks
+2. Each block has node capacity. When the node reaches the maximum capacity, the node splits
+3. The tree-like data structure is distinguished according to the quaternary tree method
+
+Note:The quaternary tree can be classified by their data form representation. The data form items are: area, point, line and curve. The quaternary tree can also be classified regardless of whether the shape of the tree is independent of the processed ranking data. 
