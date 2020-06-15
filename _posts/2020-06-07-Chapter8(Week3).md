@@ -71,7 +71,7 @@ Optimization: We can focus either on the compiler or the algorithm itself.
 1. Shell sort(diminishing increment sort)
 
 
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883563?module_item_id=901461)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883563?module_item_id=901461)
 
 ```
 static void shellsort(int[] A) {
@@ -98,7 +98,7 @@ Average: O(n(logn)^2) unstable
 The merge sort breaks the list into pieces then process each of them. Finally put it back in a certain way.
 
 
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883565?module_item_id=901465)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883565?module_item_id=901465)
 
 ```
 static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
@@ -131,7 +131,7 @@ Average: O(n logn), stable
 3. Quick sort: It was named quick because when implemented correctly, quicksort is usually the quickest sort algorithm.
 
 
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883566?module_item_id=901467)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883566?module_item_id=901467)
 
 ```
 static void quicksort(Comparable[] A, int i, int j) { // Quicksort
@@ -150,7 +150,7 @@ Average: O(n logn), unstable
 4. Heap sort: Since the efficiency of quick sort was strongly effected by the structure of the BST, we now want a balanced tree, which can be well-represented by the heap, on which the heap is based.
 
 
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883567?module_item_id=901469)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883567?module_item_id=901469)
 
 ```
 static void heapsort(Comparable[] A) {
@@ -164,7 +164,7 @@ static void heapsort(Comparable[] A) {
 Average:o(n logn), unstable
 
 5. Bin sort: The basic idea of bin is to divide the list into small piles.
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/modules/items/901470)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/modules/items/901470)
 
 ```
 static void binsort(int[] A) {
@@ -185,7 +185,7 @@ Average: O(n+k)(from bucket sort) stable
 
 6. Radix Sort
 
-implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883568?module_item_id=901472)
+implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883568?module_item_id=901472)
 
 
 ```
