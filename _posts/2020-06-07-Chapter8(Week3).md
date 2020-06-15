@@ -73,7 +73,7 @@ Optimization: We can focus either on the compiler or the algorithm itself.
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883563?module_item_id=901461)
 
-`
+
 static void shellsort(int[] A) {
   for (int i=A.length/2; i>2; i/=2) // For each increment
     for (int j=0; j<i; j++)         // Sort each sublist
@@ -184,13 +184,13 @@ Average: O(n+k)(from bucket sort) stable
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883568?module_item_id=901472)
 
 
+```
+static void radix(Integer[] A, int k, int r) {
+  Integer[] B = new Integer[A.length];
+  int[] count = new int[r];     // Count[i] stores number of records with digit value i
+  int i, j, rtok;
 
-    static void radix(Integer[] A, int k, int r) {
-    Integer[] B = new Integer[A.length];
-    int[] count = new int[r];     // Count[i] stores number of records with digit value i
-    int i, j, rtok;
-
-    for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
+  for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
     for (j=0; j<r; j++) count[j] = 0;    // Initialize count
 
     // Count the number of records for each bin on this pass
@@ -208,8 +208,9 @@ implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/88
       count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
     }
     for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
-    }
-    }
+  }
+}
+```
 
 Average: O(nk), stable
 
