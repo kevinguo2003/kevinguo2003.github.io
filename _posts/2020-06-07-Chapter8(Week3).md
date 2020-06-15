@@ -73,7 +73,7 @@ Optimization: We can focus either on the compiler or the algorithm itself.
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883563?module_item_id=901461)
 
-
+`
 static void shellsort(int[] A) {
   for (int i=A.length/2; i>2; i/=2) // For each increment
     for (int j=0; j<i; j++)         // Sort each sublist
@@ -87,6 +87,7 @@ static void inssort2(int[] A, int start, int incr) {
     for (int j=i; (j>=incr) && (A[j] < A[j-incr]); j-=incr)
       Swap.swap(A, j, j-incr);
 }
+`
 
 
 Average: O(n(logn)^2) unstable
