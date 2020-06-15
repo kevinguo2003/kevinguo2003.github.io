@@ -139,12 +139,13 @@ Average: O(n+k)(from bucket sort) stable
 
 6. Radix Sort
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883568?module_item_id=901472)
+{
 static void radix(Integer[] A, int k, int r) {
   Integer[] B = new Integer[A.length];
   int[] count = new int[r];     // Count[i] stores number of records with digit value i
   int i, j, rtok;
 
-  for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
+    for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
     for (j=0; j<r; j++) count[j] = 0;    // Initialize count
 
     // Count the number of records for each bin on this pass
@@ -163,6 +164,7 @@ static void radix(Integer[] A, int k, int r) {
     }
     for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
   }
+}
 }
 Average: O(nk), stable
 
