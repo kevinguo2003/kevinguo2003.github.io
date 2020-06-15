@@ -164,17 +164,17 @@ Average:o(n logn), unstable
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/modules/items/901470)
 
 
-static void binsort(int[] A) {
-  List[] B = new LinkedList[MaxKeyValue+1];
-  int item;
-  for (int i=0; i<=MaxKeyValue; i++)
+    static void binsort(int[] A) {
+    List[] B = new LinkedList[MaxKeyValue+1];
+    int item;
+    for (int i=0; i<=MaxKeyValue; i++)
     B[i] = new LinkedList();
-  for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
-  int pos = 0;
-  for (int i=0; i<=MaxKeyValue; i++)
+    for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
+    int pos = 0;
+    for (int i=0; i<=MaxKeyValue; i++)
     for (B[i].moveToStart(); (item = B[i].getValue()) != -1; B[i].next())
       A[pos++] = item;
-}
+    }
 
 
 Average: O(n+k)(from bucket sort) stable
@@ -184,10 +184,10 @@ implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/88
 
 
 
-static void radix(Integer[] A, int k, int r) {
-  Integer[] B = new Integer[A.length];
-  int[] count = new int[r];     // Count[i] stores number of records with digit value i
-  int i, j, rtok;
+    static void radix(Integer[] A, int k, int r) {
+    Integer[] B = new Integer[A.length];
+    int[] count = new int[r];     // Count[i] stores number of records with digit value i
+    int i, j, rtok;
 
     for (i=0, rtok=1; i<k; i++, rtok*=r) { // For k digits
     for (j=0; j<r; j++) count[j] = 0;    // Initialize count
@@ -207,8 +207,8 @@ static void radix(Integer[] A, int k, int r) {
       count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
     }
     for (j=0; j<A.length; j++) A[j] = B[j]; // Copy B back
-  }
-}
+    }
+    }
 
 Average: O(nk), stable
 
