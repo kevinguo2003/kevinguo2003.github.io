@@ -22,13 +22,13 @@ Note: In tradition, we analyze the cost of one algorithm by calculating the amou
 ### Sort algorithm we learned in CS2114
 1. Insertion Sort: code implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883559?module_item_id=901452)
 
-
+```
 static <T extends Comparable<T>> void inssort(T[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
       Swap.swap(A, j, j-1);
 }
-
+```
 
 Average: O(n^2), stable
 
@@ -36,19 +36,19 @@ Average: O(n^2), stable
 
 code implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883560?module_item_id=901454)
 
-
+```
   for (int i=0; i<A.length-1; i++) // Insert i'th record
     for (int j=1; j<A.length-i; j++)
       if (A[j-1].compareTo(A[j]) > 0)
         Swap.swap(A, j-1, j);
 }
-
+```
 
 Average: O(n^2), stable
 
 3. Selection Sort:code implementation from [openDSA](https://canvas.vt.edu/courses/111334/assignments/883561?module_item_id=901456)
 
-
+```
 static <T extends Comparable<T>> void selsort(T[] A) {
   for (int i=0; i<A.length-1; i++) {       // Select i'th biggest record
     int bigindex = 0;                      // Current biggest index
@@ -58,7 +58,7 @@ static <T extends Comparable<T>> void selsort(T[] A) {
     Swap.swap(A, bigindex, A.length-i-1);  // Put it into place
   }
 }
-
+```
 
 Average:  O(n^2), unstable
 
@@ -73,7 +73,7 @@ Optimization: We can focus either on the compiler or the algorithm itself.
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883563?module_item_id=901461)
 
-
+```
 static void shellsort(int[] A) {
   for (int i=A.length/2; i>2; i/=2) // For each increment
     for (int j=0; j<i; j++)         // Sort each sublist
@@ -87,7 +87,7 @@ static void inssort2(int[] A, int start, int incr) {
     for (int j=i; (j>=incr) && (A[j] < A[j-incr]); j-=incr)
       Swap.swap(A, j, j-incr);
 }
-`
+```
 
 
 Average: O(n(logn)^2) unstable
@@ -100,8 +100,8 @@ The merge sort breaks the list into pieces then process each of them. Finally pu
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883565?module_item_id=901465)
 
-
-  static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
+```
+static void mergesort(Comparable[] A, Comparable[] temp, int left, int right) {
   if (left == right) return;         // List has one record
   int mid = (left+right)/2;          // Select midpoint
   mergesort(A, temp, left, mid);     // Mergesort first half
@@ -122,6 +122,8 @@ implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/88
       A[curr] = temp[i2++];
   }
 }
+```
+  
 
 
 Average: O(n logn), stable
@@ -131,7 +133,7 @@ Average: O(n logn), stable
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883566?module_item_id=901467)
 
-
+```
 static void quicksort(Comparable[] A, int i, int j) { // Quicksort
   int pivotindex = findpivot(A, i, j);  // Pick a pivot
   Swap.swap(A, pivotindex, j);               // Stick pivot at end
@@ -141,7 +143,7 @@ static void quicksort(Comparable[] A, int i, int j) { // Quicksort
   if ((k-i) > 1) quicksort(A, i, k-1);  // Sort left partition
   if ((j-k) > 1) quicksort(A, k+1, j);  // Sort right partition
 }
-
+```
 
 Average: O(n logn), unstable
 
@@ -150,37 +152,39 @@ Average: O(n logn), unstable
 
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883567?module_item_id=901469)
 
-
+```
 static void heapsort(Comparable[] A) {
   // The heap constructor invokes the buildheap method
   MaxHeap H = new MaxHeap(A, A.length, A.length);
   for (int i=0; i<A.length; i++)  // Now sort
     H.removemax(); // Removemax places max at end of heap
 }
-
+```
 
 Average:o(n logn), unstable
 
 5. Bin sort: The basic idea of bin is to divide the list into small piles.
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/modules/items/901470)
 
-
-    static void binsort(int[] A) {
-    List[] B = new LinkedList[MaxKeyValue+1];
-    int item;
-    for (int i=0; i<=MaxKeyValue; i++)
+```
+static void binsort(int[] A) {
+  List[] B = new LinkedList[MaxKeyValue+1];
+  int item;
+  for (int i=0; i<=MaxKeyValue; i++)
     B[i] = new LinkedList();
-    for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
-    int pos = 0;
-    for (int i=0; i<=MaxKeyValue; i++)
+  for (int i=0; i<A.length; i++) B[A[i]].append(A[i]);
+  int pos = 0;
+  for (int i=0; i<=MaxKeyValue; i++)
     for (B[i].moveToStart(); (item = B[i].getValue()) != -1; B[i].next())
       A[pos++] = item;
-    }
+}
+```
 
 
 Average: O(n+k)(from bucket sort) stable
 
 6. Radix Sort
+
 implementation from[openDSA](https://canvas.vt.edu/courses/111334/assignments/883568?module_item_id=901472)
 
 
